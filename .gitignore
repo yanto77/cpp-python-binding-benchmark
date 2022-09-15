@@ -1,0 +1,8 @@
+build/
+.vscode/
+_archive/
+
+*.ppm
+
+src/py-swig/pkg_swig.py
+src/py-swig/pkg_swig_wrap.cpp

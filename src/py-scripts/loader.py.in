@@ -1,0 +1,45 @@
+import argparse
+import importlib
+import pathlib
+import sys
+
+parser = argparse.ArgumentParser()
+parser.add_argument('--module', dest='module', type=str)
+args = parser.parse_args()
+module = args.module
+
+if module is None:
+    print('module not specified')
+    exit(0)
+
+p = pathlib.Path(__file__).parent.parent.joinpath('${DIR_PY_MODULES}').resolve()
+sys.path.append(str(p))
+
+# Load given library using importlib
+lib = importlib.import_module(module)
+
+# Link the loaded types
+PyVec2 = lib.PyVec2
+PyMandelbrot = lib.PyMandelbrot
+PyGameOfLife = lib.PyGameOfLife
+
+# Decide on a module name used for labels in plots
+if sys.executable.startswith('/usr/bin/python'):
+    module_name = module.replace("pkg_", "cpy_")
+elif sys.executable.startswith('/usr/bin/pypy'):
+    module_name = module.replace("pkg_", "pypy_")
+else:
+    module_name = module.replace("pkg_", "err_")
+
+mandelbrot_config = {
+    'iter': ${BENCH_MANDELBROT_MAX_ITER},
+    'size': PyVec2(${BENCH_MANDELBROT_SIZE_X}, ${BENCH_MANDELBROT_SIZE_Y}),
+}
+
+gameoflife_config = {
+    'iter': ${BENCH_GAMEOFLIFE_MAX_ITER},
+    'rows': ${BENCH_GAMEOFLIFE_ROWS},
+    'cols': ${BENCH_GAMEOFLIFE_COLS},
+    'cells_start': ${BENCH_GAMEOFLIFE_CELLS_START},
+    'cells_end': ${BENCH_GAMEOFLIFE_CELLS_END},
+}

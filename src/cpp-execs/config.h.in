@@ -1,0 +1,11 @@
+#pragma once
+
+constexpr inline size_t MANDELBROT_MAX_ITER = @BENCH_MANDELBROT_MAX_ITER@;
+constexpr inline size_t MANDELBROT_SIZE_X = @BENCH_MANDELBROT_SIZE_X@;
+constexpr inline size_t MANDELBROT_SIZE_Y = @BENCH_MANDELBROT_SIZE_Y@;
+
+constexpr inline size_t GAMEOFLIFE_MAX_ITER = @BENCH_GAMEOFLIFE_MAX_ITER@;
+constexpr inline size_t GAMEOFLIFE_ROWS = @BENCH_GAMEOFLIFE_ROWS@;
+constexpr inline size_t GAMEOFLIFE_COLS = @BENCH_GAMEOFLIFE_COLS@;
+constexpr inline size_t GAMEOFLIFE_CELLS_START = @BENCH_GAMEOFLIFE_CELLS_START@;
+constexpr inline size_t GAMEOFLIFE_CELLS_END = @BENCH_GAMEOFLIFE_CELLS_END@;
